@@ -45,7 +45,8 @@ Quantize the input array `V` to the given block format `format`.
 - `V::AbstractArray`: The input array to quantize.
 - `format::BlockFormat{E,S,k}`: The block format to quantize to.
 - `method::Method`: The method to use for quantization.
-- `axis::Symbol`: The axis to quantize along. Must be :column or :row.
+- `axis::Symbol`: The axis to quantize along. Must be `:column` or `:row`.
+If `:row`, the first two dimensions are transposed such that the blocks are contiguous along the first dimension.
 
 # Returns
 - `X::AbstractArray`: The scale factors.

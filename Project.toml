@@ -11,5 +11,5 @@ Microfloats = "31c70f10-a750-4521-b13c-797315ae2933"
 [compat]
 Einops = "0.1.9"
 FixedPointNumbers = "0.8.5"
-Microfloats = "0.0.5"
+Microfloats = "0.0.6"
 julia = "1.10"
