@@ -5,7 +5,7 @@ A block format specifies the element type, scale type, and number of elements pe
 """
 struct BlockFormat{E,S,k} end
 
-floatrange(T::Type{<:AbstractFloat}) = -floatmax(T), floatmax(T)
+floatrange(T) = -floatmax(T), floatmax(T)
 convert_clamp(T, x) = convert(T, clamp(x, floatrange(T)...))
 
 abstract type Method end

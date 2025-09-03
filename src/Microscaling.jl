@@ -7,6 +7,8 @@ using Microfloats
 include("quantize.jl")
 export quantize
 export BlockFormat
+export GenericMethod
+export MXFPMethod
 
 include("bitpack.jl")
 export bitpack
@@ -60,7 +62,7 @@ MXFP6_E3M2
 """
     MXFP8_E4M3
 
-`MXFP8_E4M3` is a microscaling format using FP8 elements (E4M3, including NaN/Inf),
+`MXFP8_E4M3` is a microscaling format using FP8 elements (E4M3, including NaN),
 with E8M0 scale factors, each scaling contiguous element blocks of 32.
 """
 MXFP8_E4M3

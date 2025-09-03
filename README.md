@@ -6,7 +6,9 @@
 [![Coverage](https://codecov.io/gh/MurrellGroup/Microscaling.jl/branch/main/graph/badge.svg)](https://codecov.io/gh/MurrellGroup/Microscaling.jl)
 
 Microscaling is a Julia package that implements microscaling formats, quantization functions, and bitpacking functions,
-based on the [Open Compute Project Microscaling Formats (MX) Specification](https://www.opencompute.org/documents/ocp-microscaling-formats-mx-v1-0-spec-final-pdf)
+based on the [Open Compute Project Microscaling Formats (MX) Specification](https://www.opencompute.org/documents/ocp-microscaling-formats-mx-v1-0-spec-final-pdf).
+
+Microscaling.jl is designed for interoperability with [Microfloats.jl](https://github.com/MurrellGroup/Microfloats.jl).
 
 ## Exported Formats
 
