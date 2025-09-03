@@ -31,7 +31,7 @@ function quantize_blocks(
     size(V, 1) == k || error("Block format specifies $k elements per block, but input has $(size(V, 1)) elements")
     emax_elem = Microfloats.right_aligned_exponent(floatmax(E)) - Microfloats.bias(E)
     shared_exp = floor.(Int16, log2.(maximum(abs, V, dims=1))) .- Int16(emax_elem)
-    X = MX_E8M0(2.0f0 .^ shared_exp)
+    X = MX_E8M0.(2.0f0 .^ shared_exp)
     P = convert_clamp.(E, V ./ X)
     return X, P
 end
