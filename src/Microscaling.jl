@@ -5,21 +5,23 @@ using FixedPointNumbers
 using Microfloats
 
 include("quantize.jl")
-export quantize
 export BlockFormat
 export GenericMethod
 export MXFPMethod
+export quantize
+export dequantize
 
-include("bitpack.jl")
-export bitpack
+include("bitpack/bitpack.jl")
+export bitpack, bitpack!
+export bitunpack, bitunpack!
 
-const NVFP4 = BlockFormat{MX_E2M1, Float8_E4M3, 16}()
-const MXFP4 = BlockFormat{MX_E2M1, MX_E8M0, 32}()
-const MXFP6_E2M3 = BlockFormat{MX_E2M3, MX_E8M0, 32}()
-const MXFP6_E3M2 = BlockFormat{MX_E3M2, MX_E8M0, 32}()
-const MXFP8_E4M3 = BlockFormat{MX_E4M3, MX_E8M0, 32}()
-const MXFP8_E5M2 = BlockFormat{MX_E5M2, MX_E8M0, 32}()
-const MXINT8 = BlockFormat{Q1f6, MX_E8M0, 32}()
+const NVFP4 = BlockFormat{MX_E2M1, Float8_E4M3, 16}
+const MXFP4 = BlockFormat{MX_E2M1, MX_E8M0, 32}
+const MXFP6_E2M3 = BlockFormat{MX_E2M3, MX_E8M0, 32}
+const MXFP6_E3M2 = BlockFormat{MX_E3M2, MX_E8M0, 32}
+const MXFP8_E4M3 = BlockFormat{MX_E4M3, MX_E8M0, 32}
+const MXFP8_E5M2 = BlockFormat{MX_E5M2, MX_E8M0, 32}
+const MXINT8 = BlockFormat{Q1f6, MX_E8M0, 32}
 
 export NVFP4
 export MXFP4
