@@ -1,5 +1,6 @@
 module Microscaling
 
+using BitPacking
 using Einops
 using FixedPointNumbers
 using Microfloats
@@ -13,20 +14,15 @@ export MXFP8_E4M3, MXFP8_E5M2
 export MXINT8
 
 include("layouts.jl")
-export MatrixLayout, RowMajor, ColumnMajor
 export ScaleFactorLayout, Naive, Sm1xx
+export change_layout
 
-include("quantize.jl")
-export quantize
-export dequantize
+include("MicroscaledArray.jl")
+export MicroscaledArray
+export bitpacked
 
-include("bitpack/bitpack.jl")
-export bitpack, bitpack!
-export bitunpack, bitunpack!
-
-include("blockscaled.jl")
-export BlockScaled
-export NaiveBlockScaled
-export Sm1xxBlockScaled
+include("quantization.jl")
+export quantize, quantize!
+export dequantize, dequantize!
 
 end
