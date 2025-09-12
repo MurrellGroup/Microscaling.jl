@@ -12,6 +12,7 @@ Microfloats = "31c70f10-a750-4521-b13c-797315ae2933"
 TupleTools = "9d95972d-f1c8-5527-a6e0-b4b365fa01f6"
 
 [compat]
+BitPacking = "0.1"
 Einops = "0.1.9"
 FillArrays = "1.13.0"
 FixedPointNumbers = "0.8.5"
