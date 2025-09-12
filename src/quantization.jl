@@ -18,17 +18,25 @@ end
 # could reshape before and then lazily move two axes at once
 function quantize!(μ::MicroscaledArray, V::AbstractArray)
     V_contig = moveaxis(V, contiguous_axis(μ), 1)
-    V_blocks = rearrange(V_contig, einops"(k n) ... -> k n ..."; k)
+    V_blocks = rearrange(V_contig, einops"(k n) ... -> k n ..."; k=block_size(μ))
     quantize_blocks!(μ, V_blocks)
     return μ
 end
 
-const quantize = microscaled
+function quantize(x::AbstractArray, format::F; T=eltype(x), axis=Val(1)) where {E,S,F<:BlockFormat{E,S}}
+    permuted_size = move(size(x), unval(axis), 1)
+    element_size = (block_size(format), permuted_size[1] ÷ block_size(format), permuted_size[2:end]...)
+    element = similar(x, E, element_size...)
+    scale = similar(x, S, 1, element_size[2:end]...)
+    μ = MicroscaledArray{F,unval(axis),T}(element, scale)
+    quantize!(μ, x)
+    return μ
+end
 
 function dequantize(μ::MicroscaledArray, T::Type=eltype(μ))
     V_blocks = T.(μ.element)
     V_blocks .*= μ.scale
-    V_contig = rearrange(V_blocks, einops"k n ... -> (k n) ..."; k)
+    V_contig = rearrange(V_blocks, einops"k n ... -> (k n) ..."; k=block_size(μ))
     V = moveaxis(V_contig, Val(1), Val(contiguous_axis(μ)))
     return V
 end

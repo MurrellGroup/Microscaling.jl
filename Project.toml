@@ -4,12 +4,20 @@ authors = ["Anton Oresten <antonoresten@proton.me> and contributors"]
 version = "0.0.2"
 
 [deps]
+BFloat16s = "ab4f0b2a-ad5b-11e8-123f-65d77653426b"
 BitPacking = "b58c8408-13c4-4787-8733-7038ae624acf"
 Einops = "e3ce28c8-8bfb-4704-8add-e3e7f14b55c9"
 FillArrays = "1a297f60-69ca-5386-bcde-b61e274b549b"
 FixedPointNumbers = "53c48c17-4a7d-5ca2-90c5-79b7896eea93"
+LinearAlgebra = "37e2e46d-f89d-539d-b4ee-838fcccc9c8e"
 Microfloats = "31c70f10-a750-4521-b13c-797315ae2933"
 TupleTools = "9d95972d-f1c8-5527-a6e0-b4b365fa01f6"
+
+[weakdeps]
+CUDA = "052768ef-5323-5732-b1bb-66c8b64840ba"
+
+[extensions]
+MicroscalingCUDAExt = "CUDA"
 
 [compat]
 Einops = "0.1.9"

@@ -5,7 +5,7 @@ unval(::Val{x}) where x = x
 unval(x) = x
 
 function moveperm(n, src, dest)
-    return TupleTools.insertafter(
+    return insertafter(
         (ntuple(identity, src-1)..., ntuple(i -> i+src, n-src)...),
         dest-1, (src,)
     )::NTuple{n}
@@ -24,7 +24,7 @@ function moveaxis(x::A, ::Val{src}, ::Val{dest}) where {T,N,A<:AbstractArray{T,N
 end
 
 function moveaxis(x::AbstractArray, src, dest)
-    return permutedims(x, moveperm(N, src, dest))
+    return permutedims(x, moveperm(ndims(x), src, dest))
 end
 
 move(x::Tuple, args...) = permute(x, moveperm(x, args...))

@@ -5,8 +5,10 @@ using Einops
 using FixedPointNumbers
 using Microfloats
 
+include("utils.jl")
+
 include("formats.jl")
-export BlockFormat
+export BlockFormat, block_size
 export NVFP4
 export MXFP4
 export MXFP6_E2M3, MXFP6_E3M2
@@ -19,10 +21,13 @@ export change_layout
 
 include("MicroscaledArray.jl")
 export MicroscaledArray
+export ColumnMajorMicroscaledArray, RowMajorMicroscaledArray
 export bitpacked
 
 include("quantization.jl")
 export quantize, quantize!
 export dequantize, dequantize!
+
+include("gemm.jl")
 
 end
